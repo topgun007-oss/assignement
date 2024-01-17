@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background: #000 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M20 19V1h-1v18h1zm-4 0V1h-1v18h1zm-4 0V1h-1v18h1zm-4 0V1H7v18h1zm-4 0V1H3v18h1zm-2 0V1H1v18h1zM19 0H1v1h18V0zm0 4H1v1h18V0zm0 4H1v1h18V0zm0 4H1v1h18V0zm0 4H1v1h18V0z" fill="%23fff" fill-opacity="0.05"/></svg>') repeat;
+        }
+        #animationBox {
+            width: 300px;
+            height: 250px;
+            border: 2px solid white;
+            position: relative;
+            overflow: hidden;
+        }
+        .bar { 
+            width: 50px; 
+            height: 50px; 
+            position: absolute;
+            bottom: 0;
+            animation-play-state: paused;
+        }
+        @keyframes myAnimation {
+            0%   {height: 50px;}
+            50%  {height: 200px;}
+            100% {height: 50px;}
+        }
+        #bar1 { background-color: red; left: 0px; animation: myAnimation 2s infinite; }
+        #bar2 { background-color: orange; left: 60px; animation: myAnimation 2s infinite 0.4s; }
+        #bar3 { background-color: yellow; left: 120px; animation: myAnimation 2s infinite 0.8s; }
+        #bar4 { background-color: green; left: 180px; animation: myAnimation 2s infinite 1.2s; }
+        #bar5 { background-color: blue; left: 240px; animation: myAnimation 2s infinite 1.6s; }
+        button {
+            margin: 20px;
+            padding: 10px;
+        }
+        #start { background-color: green; }
+        #reset { background-color: purple; }
+        #stop { background-color: red; }
+    </style>
+</head>
+<body>
+
+<div id="animationBox">
+    <div id="bar1" class="bar"></div>
+    <div id="bar2" class="bar"></div>
+    <div id="bar3" class="bar"></div>
+    <div id="bar4" class="bar"></div>
+    <div id="bar5" class="bar"></div>
+</div>
+
+<div style="position: absolute; bottom: 0;">
+    <button id="start" onclick="start()">Start</button>
+    <button id="reset" onclick="reset()">Reset</button>
+    <button id="stop" onclick="stop()">Stop</button>
+</div>
+
+<script>
+    var bars = document.querySelectorAll('.bar'); 
+
+    function start() {
+        bars.forEach(bar => {
+            bar.style.animationPlayState = "running"; 
+        });
+    }
+
+    function stop() {
+        bars.forEach(bar => {
+            bar.style.animationPlayState = "paused"; 
+        });
+    }
+
+    function reset() {
+        bars.forEach(bar => {
+            bar.style.height = "200px";
+            bar.style.animation = "";
+        });
+    }
+</script>
+
+</body>
+</html>
+
+
+
+
